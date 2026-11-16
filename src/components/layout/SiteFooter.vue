@@ -1,5 +1,6 @@
-<script setup lang="ts">
+﻿<script setup lang="ts">
 import { RouterLink } from 'vue-router'
+const publicBase = import.meta.env.BASE_URL
 </script>
 
 <template>
@@ -9,28 +10,7 @@ import { RouterLink } from 'vue-router'
         <!-- Coluna 1: Logo & Missão -->
         <div class="footer-col brand-col">
           <div class="footer-brand">
-            <div class="footer-brand-icon" aria-hidden="true">
-              <svg viewBox="0 0 48 48" class="footer-icon-svg" fill="none">
-                <path
-                  d="M24 41.5s-16-10.2-16-23C8 11.8 13.5 7 19.5 7c4.2 0 7.5 2.5 8.5 4.5 1-2 4.3-4.5 8.5-4.5 6 0 11.5 4.8 11.5 11.5 0 12.8-16 23-16 23z"
-                  fill="#ffffff"
-                />
-                <path
-                  d="M17 25c1.5-3 5.5-4.5 8-4.5s3.5 1 3.5 2.5c0 1.5-1.5 2.5-3.5 2.5-3 0-5 1.5-6 3l-2-3.5z"
-                  fill="#071b38"
-                />
-                <path
-                  d="M31 25c-1.5-3-5.5-4.5-8-4.5s-3.5 1-3.5 2.5c0 1.5 1.5 2.5 3.5 2.5 3 0 5 1.5 6 3l2-3.5z"
-                  fill="#071b38"
-                />
-                <circle cx="24" cy="18" r="2.5" fill="#071b38" />
-              </svg>
-            </div>
-            <div class="footer-brand-text">
-              <span class="brand-title">DIABETES</span>
-              <span class="brand-subtitle">SEM BARREIRAS</span>
-              <span class="brand-tag">REVISTA DIGITAL</span>
-            </div>
+            <img class="footer-logo" :src="`${publicBase}images/logo-diabetes-sem-barreiras.svg`" alt="Diabetes Sem Barreiras" />
           </div>
           <p class="brand-mission">
             Projeto educativo desenvolvido por alunos de Enfermagem para promover saúde, inclusão
@@ -121,22 +101,7 @@ import { RouterLink } from 'vue-router'
         <div class="footer-col realization-col">
           <h3 class="col-heading">Realização</h3>
           <div class="senac-brand-box">
-            <div class="senac-logo-stylized">
-              <!-- Logotipo do Senac (onda superior com texto Senac) -->
-              <svg viewBox="0 0 120 45" class="senac-svg" aria-label="Logo Senac">
-                <path
-                  d="M10 28 C 30 14, 55 12, 75 22 C 90 28, 105 24, 115 16"
-                  stroke="#f58220"
-                  stroke-width="5"
-                  fill="none"
-                  stroke-linecap="round"
-                />
-                <text x="12" y="38" fill="#ffffff" font-size="20" font-weight="900" font-family="Inter, sans-serif">
-                  Senac
-                </text>
-              </svg>
-            </div>
-            <span class="senac-unit">ARACATUBA</span>
+            <img class="senac-logo" :src="`${publicBase}images/senac_logo.jpg`" alt="Logo Senac" />
           </div>
         </div>
       </div>
@@ -183,6 +148,12 @@ import { RouterLink } from 'vue-router'
   align-items: center;
   gap: 0.5rem;
   margin-bottom: 0.75rem;
+}
+
+.footer-logo {
+  display: block;
+  width: 220px;
+  height: auto;
 }
 
 .footer-brand-icon {
@@ -341,9 +312,11 @@ import { RouterLink } from 'vue-router'
   gap: 2px;
 }
 
-.senac-svg {
-  width: 100px;
-  height: 35px;
+.senac-logo {
+  display: block;
+  width: 110px;
+  max-width: 100%;
+  height: auto;
 }
 
 .senac-unit {

@@ -1,10 +1,11 @@
-<script setup lang="ts">
+﻿<script setup lang="ts">
 import { ref } from 'vue'
 import { RouterLink } from 'vue-router'
 import MainNavigation from './MainNavigation.vue'
 import AccessibilityToolbar from '@/components/acessibilidade/AccessibilityToolbar.vue'
 
 const menuAberto = ref(false)
+const publicBase = import.meta.env.BASE_URL
 
 function alternarMenu() {
   menuAberto.value = !menuAberto.value
@@ -18,32 +19,8 @@ function fecharMenu() {
 <template>
   <header class="site-header">
     <div class="header-inner">
-      <!-- Logotipo Institucional com Coração e Mãos -->
-      <RouterLink to="/" class="brand-link" aria-label="Diabetes Sem Barreiras - Revista Digital">
-        <div class="brand-icon" aria-hidden="true">
-          <!-- Coração estilizado com mãos / acolhimento idêntico à referência -->
-          <svg viewBox="0 0 48 48" class="icon-svg" fill="none">
-            <path
-              d="M24 41.5s-16-10.2-16-23C8 11.8 13.5 7 19.5 7c4.2 0 7.5 2.5 8.5 4.5 1-2 4.3-4.5 8.5-4.5 6 0 11.5 4.8 11.5 11.5 0 12.8-16 23-16 23z"
-              fill="#0e326b"
-            />
-            <!-- Mãos brancas de cuidado dentro do coração -->
-            <path
-              d="M17 25c1.5-3 5.5-4.5 8-4.5s3.5 1 3.5 2.5c0 1.5-1.5 2.5-3.5 2.5-3 0-5 1.5-6 3l-2-3.5z"
-              fill="#ffffff"
-            />
-            <path
-              d="M31 25c-1.5-3-5.5-4.5-8-4.5s-3.5 1-3.5 2.5c0 1.5 1.5 2.5 3.5 2.5 3 0 5 1.5 6 3l2-3.5z"
-              fill="#ffffff"
-            />
-            <circle cx="24" cy="18" r="2.5" fill="#ffffff" />
-          </svg>
-        </div>
-        <div class="brand-text">
-          <span class="brand-title">DIABETES</span>
-          <span class="brand-subtitle">SEM BARREIRAS</span>
-          <span class="brand-tag">REVISTA DIGITAL</span>
-        </div>
+      <RouterLink to="/" class="brand-link" aria-label="Diabetes Sem Barreiras - Portal educativo">
+        <img class="brand-logo" :src="`${publicBase}images/logo-diabetes-sem-barreiras.svg`" alt="Diabetes Sem Barreiras" />
       </RouterLink>
 
       <!-- Navegação Central Desktop -->
@@ -122,46 +99,7 @@ function fecharMenu() {
   text-decoration: none;
 }
 
-.brand-icon {
-  width: 42px;
-  height: 42px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.icon-svg {
-  width: 100%;
-  height: 100%;
-}
-
-.brand-text {
-  display: flex;
-  flex-direction: column;
-  line-height: 1.05;
-}
-
-.brand-title {
-  font-size: 1.15rem;
-  font-weight: 900;
-  color: var(--color-primary);
-  letter-spacing: 0.02em;
-}
-
-.brand-subtitle {
-  font-size: 0.825rem;
-  font-weight: 800;
-  color: var(--color-purple);
-  letter-spacing: 0.05em;
-}
-
-.brand-tag {
-  font-size: 0.625rem;
-  font-weight: 700;
-  color: var(--color-primary);
-  letter-spacing: 0.12em;
-  margin-top: 1px;
-}
+.brand-logo { display: block; width: 250px; height: 54px; object-fit: contain; object-position: left center; }
 
 /* Navegação Desktop */
 .desktop-navigation {
@@ -223,20 +161,10 @@ function fecharMenu() {
 }
 
 @media (max-width: 640px) {
+  .brand-logo { width: min(64vw, 220px); height: 48px; }
   .desktop-accessibility {
     display: none;
   }
 }
 
-html.high-contrast .brand-title {
-  color: #ffff00;
-}
-
-html.high-contrast .brand-subtitle {
-  color: #ffffff;
-}
-
-html.high-contrast .brand-tag {
-  color: #ffffff;
-}
 </style>
